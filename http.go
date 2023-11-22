@@ -14,10 +14,10 @@ type JCodec struct {
 }
 
 func serveHTTP() {
-	//gin.SetMode(gin.ReleaseMode)
+	gin.SetMode(gin.ReleaseMode)
 	router := gin.Default()
-	//router.Use(CORSMiddleware())
 
+	//router.Use(CORSMiddleware())
 	router.POST("/"+Config.Server.AuthToken, HTTPAPIServerStreamWebRTC)
 
 	var err error
@@ -31,7 +31,6 @@ func serveHTTP() {
 	}
 }
 
-// HTTPAPIServerStreamWebRTC stream video over WebRTC
 func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 	uuid := "H264"
 
