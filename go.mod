@@ -1,4 +1,5 @@
 module github.com/spreatty/driveway-live
+
 go 1.21
 
 require (
