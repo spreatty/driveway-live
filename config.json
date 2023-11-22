@@ -6,7 +6,8 @@
     "tls_key": "../privkey.pem",
     "webrtc_port_min": 5000,
     "webrtc_port_max": 5999,
-    "auth_token": "token"
+    "auth_token": "token",
+    "host": "http://127.0.0.1:8080"
   },
   "streams": {
     "H264": {
