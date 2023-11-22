@@ -15,11 +15,10 @@ type JCodec struct {
 
 func serveHTTP() {
 	//gin.SetMode(gin.ReleaseMode)
-
 	router := gin.Default()
 	//router.Use(CORSMiddleware())
 
-	router.POST("/"+Config.Server.AuthToken+"/stream/receiver/:uuid", HTTPAPIServerStreamWebRTC)
+	router.POST("/"+Config.Server.AuthToken, HTTPAPIServerStreamWebRTC)
 
 	var err error
 	if Config.Server.UseTLS {
@@ -34,12 +33,14 @@ func serveHTTP() {
 
 // HTTPAPIServerStreamWebRTC stream video over WebRTC
 func HTTPAPIServerStreamWebRTC(c *gin.Context) {
-	if !Config.ext(c.PostForm("suuid")) {
+	uuid := "H264"
+
+	if !Config.ext(uuid) {
 		log.Println("Stream Not Found")
 		return
 	}
-	Config.RunIFNotRun(c.PostForm("suuid"))
-	codecs := Config.coGe(c.PostForm("suuid"))
+	Config.RunIFNotRun(uuid)
+	codecs := Config.coGe(uuid)
 	if codecs == nil {
 		log.Println("Stream Codec Not Found")
 		return
@@ -60,8 +61,8 @@ func HTTPAPIServerStreamWebRTC(c *gin.Context) {
 		return
 	}
 	go func() {
-		cid, ch := Config.clAd(c.PostForm("suuid"))
-		defer Config.clDe(c.PostForm("suuid"), cid)
+		cid, ch := Config.clAd(uuid)
+		defer Config.clDe(uuid, cid)
 		defer muxerWebRTC.Close()
 		var videoStart bool
 		noVideo := time.NewTimer(10 * time.Second)
