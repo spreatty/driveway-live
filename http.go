@@ -14,8 +14,7 @@ type JCodec struct {
 }
 
 func serveHTTP() {
-
-	gin.SetMode(gin.ReleaseMode)
+	//gin.SetMode(gin.ReleaseMode)
 
 	router := gin.Default()
 	//router.Use(CORSMiddleware())

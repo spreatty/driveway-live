@@ -1,6 +1,6 @@
 {
   "server": {
-    "http_port": ":80",
+    "http_port": ":8081",
     "use_tls": false,
     "tls_cert": "../cert.pem",
     "tls_key": "../privkey.pem",
