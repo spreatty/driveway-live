@@ -38,7 +38,7 @@ type ServerST struct {
 	TLSCert       string   `json:"tls_cert"`
 	TLSKey        string   `json:"tls_key"`
 	AuthToken     string   `json:"auth_token"`
-	Host          string   `json:"host"`
+	Hosts         []string `json:"hosts"`
 }
 
 // StreamST struct
